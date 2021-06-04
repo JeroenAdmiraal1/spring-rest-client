@@ -2,9 +2,12 @@ package guru.springframework.springrestclient.services;
 
 import guru.springframework.domain.Person;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.util.UriComponentsBuilder;
+import reactor.core.publisher.Flux;
 
 import java.util.Arrays;
 import java.util.List;
@@ -29,5 +32,14 @@ public class ApiServiceImpl implements ApiService {
 		Person[] persons = restTemplate.getForObject(uriComponentsBuilder.toUriString(), Person[].class);
 
 		return Arrays.asList(persons);
+	}
+
+	@Override
+	public Flux<Person> getFluxOfPersons() {
+		return WebClient
+				       .create(api_url)
+				       .get()
+				       .accept(MediaType.APPLICATION_JSON)
+				       .exchangeToFlux(clientResponse -> clientResponse.bodyToFlux(Person.class));
 	}
 }

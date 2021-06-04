@@ -26,4 +26,12 @@ public class IndexController {
 
 		return "people";
 	}
+
+	@GetMapping("/peopleflux")
+	public String getPeopleFlux(Model model){
+
+		model.addAttribute("persons", apiService.getFluxOfPersons().collectList().block());
+
+		return "people";
+	}
 }
