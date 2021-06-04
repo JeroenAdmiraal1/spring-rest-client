@@ -14,7 +14,7 @@ public class ApiServiceImpl implements ApiService {
 
 	private final String api_url;
 
-	private RestTemplate restTemplate;
+	private final RestTemplate restTemplate;
 
 	public ApiServiceImpl(RestTemplate restTemplate, @Value("${api.url}") String api_url) {
 		this.restTemplate = restTemplate;

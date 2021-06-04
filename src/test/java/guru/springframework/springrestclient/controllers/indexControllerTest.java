@@ -39,9 +39,6 @@ class indexControllerTest {
 
 	@Test
 	public void getPeople() throws Exception {
-		webTestClient.get().uri("/people")
-				.exchange()
-				.expectStatus().isOk();
 
 		EntityExchangeResult<String> result = webTestClient.get().uri("/people")
 				                                      .exchange()

@@ -24,9 +24,6 @@ class ApiServiceImplTest {
 	void getPersons() {
 
 		List<Person> people = apiService.getPersons();
-
-		System.out.println(people.toString());
-
 		Person person = people.get(2);
 
 		assertEquals("Samantha", person.getUsername());
