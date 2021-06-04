@@ -2,9 +2,9 @@ package guru.springframework.springrestclient.services;
 
 import guru.springframework.domain.Person;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface ApiService {
 
-	ArrayList<Person> getPersons();
+	List<Person> getPersons();
 }

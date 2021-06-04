@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -23,8 +23,13 @@ class ApiServiceImplTest {
 	@Test
 	void getPersons() {
 
-		ArrayList<Person> people = apiService.getPersons();
+		List<Person> people = apiService.getPersons();
 
+		System.out.println(people.toString());
+
+		Person person = people.get(2);
+
+		assertEquals("Samantha", person.getUsername());
 		assertEquals(people.size(), 10);
 	}
 }
